@@ -3,11 +3,16 @@
 
 Michal Hajlasz and Sen Pei
 
-The Google COVID-19 Community Mobility Reports data and a csv file containing data for the features in our analysis are in the data directory.
+The Google COVID-19 Community Mobility Reports data and a dataframe containing our analysis' features are in the data/raw_data directory.
 
-The Google COVID-19 Community Mobility Reports data is processed into predictability data and added to features.csv 
+Pickle files used to create some figures are in the data/intermediate_data directory.
 
-python ./src/create_raw_time_series_pickles_from_csv.py
-python ./src/create_raw_time_series_pickles_from_csv.py
-python ./src/create_pred_table.py
-python ./src/create_tables_for_GAM.py
+Dataframes used for our GAM analysis are in the data/data_for_GAM directory.
+
+All of the files in the data/intermediate_data and data/data_for_GAM directories can be created from the files in the data/raw_data directory by the running the scripts in src/data_processing in the following order:
+
+    python ./src/data_processing/create_raw_time_series_pickles_from_csv.py
+    python ./src/data_processing/create_raw_time_series_pickles_from_csv.py
+    python ./src/data_processing/create_pred_table.py
+    python ./src/data_processing/create_tables_for_GAM.py
+
