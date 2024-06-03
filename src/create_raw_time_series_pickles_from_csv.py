@@ -1,84 +1,100 @@
 import numpy as np
 import pandas as pd
 import pickle
-from datetime import datetime, timedelta
+from datetime import timedelta, datetime
 
-class CountyTimeSeries:
-    def __init__(self, start_date, end_date):
-        self.start_date = start_date
-        self.end_date = end_date
-        self.days = self.generate_days()
-        self.county_dicts = self.initialize_dicts()
+START_OF_2020 = '2020-02-15'
+END_OF_2020 = '2020-12-31'
+START_OF_2021 = '2021-01-01'
+END_OF_2021 = '2021-12-31'
+START_OF_2022 = '2022-01-01'
+END_OF_2022 = '2022-07-26'
 
-    def generate_days(self):
-        start = datetime.strptime(self.start_date, '%Y-%m-%d')
-        end = datetime.strptime(self.end_date, '%Y-%m-%d')
-        num_days = (end - start).days + 1
-        return [(start + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(num_days)]
+date_format = '%Y-%m-%d'
+start = datetime.strptime(START_OF_2020, date_format)
+end = datetime.strptime(END_OF_2022, date_format)
+numDays = (end - start).days + 2
 
-    def read_data(self, filename):
-        data = pd.read_csv(filename)
-        data = data[data.census_fips_code.notnull()]
-        return data
+days = [(start + timedelta(days=i)).strftime(date_format) for i in range(numDays)]
 
-    def initialize_dicts(self):
-        categories = ['RetailAndRecreation', 'GroceryAndPharmacy', 'Parks', 'TransitStations', 'Workplaces', 'Residences']
-        return {category: {} for category in categories}
+def add_missing_days(county_data, numDays):
+    county_data.extend([np.NAN] * numDays)
 
-    def populate_time_series(self, data, year_start_index):
-        grouped = data.groupby('census_fips_code')
-        for county, group in grouped:
-            if county not in self.county_dicts['RetailAndRecreation']:
-                for category in self.county_dicts:
-                    self.county_dicts[category][county] = [np.nan] * year_start_index
-            
-            which_day = year_start_index
-            for _, row in group.iterrows():
-                while self.days[which_day] != row['date']:
-                    for category in self.county_dicts:
-                        self.county_dicts[category][county].append(np.nan)
-                    which_day += 1
+def populate_time_series(county_dicts, group, start_index, end_date):
+    whichDayIsIt = start_index
+    for index, row in group.iterrows():
+        while days[whichDayIsIt] != row['date']:
+            intendedDay = datetime.strptime(days[whichDayIsIt], date_format)
+            actualDay = datetime.strptime(row['date'], date_format)
+            numDays = (actualDay - intendedDay).days
+            for county_data in county_dicts.values():
+                add_missing_days(county_data, numDays)
+            whichDayIsIt += numDays
+        for category, county_data in county_dicts.items():
+            county_data.append(row[category])
+        whichDayIsIt += 1
+    intendedLastDay = datetime.strptime(end_date, date_format)
+    actualLastDay = datetime.strptime(days[whichDayIsIt], date_format)
+    numMissingDays = (intendedLastDay - actualLastDay).days + 1
+    for county_data in county_dicts.values():
+        add_missing_days(county_data, numMissingDays)
 
-                for category in self.county_dicts:
-                    self.county_dicts[category][county].append(row[f'{category.lower()}_percent_change_from_baseline'])
-                which_day += 1
+def createCountyTS(filename2020, filename2021, filename2022):
+    table2020 = pd.read_csv(filename2020)
+    table2021 = pd.read_csv(filename2021)
+    table2022 = pd.read_csv(filename2022)
 
-            while which_day < len(self.days):
-                for category in self.county_dicts:
-                    self.county_dicts[category][county].append(np.nan)
-                which_day += 1
+    #REMOVE ROWS WHERE FIPS = NAN
+    table2020 = table2020[table2020.census_fips_code.notnull()]
+    table2021 = table2021[table2021.census_fips_code.notnull()]
+    table2022 = table2022[table2022.census_fips_code.notnull()]
 
-    def clean_data(self):
-        bad_counties = {county for county, values in self.county_dicts['RetailAndRecreation'].items() if all(np.isnan(values))}
-        for category in self.county_dicts:
-            for county in bad_counties:
-                if county in self.county_dicts[category]:
-                    del self.county_dicts[category][county]
-
-    def save_pickle(self, directory):
-        for category, data in self.county_dicts.items():
-            with open(f'{directory}/county{category}.pickle', 'wb') as handle:
-                pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-def create_county_time_series(filenames, output_directory):
-    start_dates = ['2020-02-15', '2021-01-01', '2022-01-01']
-    end_date = '2022-07-26'
-    year_start_indices = [0, 321, 686]  # Starting index for each year in the full date range
-
-    cts = CountyTimeSeries('2020-02-15', end_date)
-    
-    for filename, year_start_index in zip(filenames, year_start_indices):
-        data = cts.read_data(filename)
-        cts.populate_time_series(data, year_start_index)
-
-    cts.clean_data()
-    cts.save_pickle(output_directory)
-
-if __name__ == "__main__":
-    filenames = [
-        "F:/Pei/DATA/US_PERCENT_CHANGE_FINAL/2020_US_Region_Mobility_Report.csv",
-        "F:/Pei/DATA/US_PERCENT_CHANGE_FINAL/2021_US_Region_Mobility_Report.csv",
-        "F:/Pei/DATA/US_PERCENT_CHANGE_FINAL/2022_US_Region_Mobility_Report.csv"
+    categories = [
+        'retail_and_recreation_percent_change_from_baseline',
+        'grocery_and_pharmacy_percent_change_from_baseline',
+        'parks_percent_change_from_baseline',
+        'transit_stations_percent_change_from_baseline',
+        'workplaces_percent_change_from_baseline',
+        'residential_percent_change_from_baseline'
     ]
-    output_directory = "F:/Pei/DATA/US_PERCENT_CHANGE_FINAL"
-    create_county_time_series(filenames, output_directory)
+
+    county_dicts = {category: {} for category in categories}
+
+    #INIT EACH TIME SERIES AS AN EMPTY LIST
+    grouped2020 = table2020.groupby('census_fips_code')
+    for county, group in grouped2020:
+        for category in categories:
+            county_dicts[category][county] = []
+
+    #POPULATE TIME SERIES WITH VALUES FOR 2020
+    for county, group in grouped2020:
+        populate_time_series({cat: county_dicts[cat][county] for cat in categories}, group, 0, END_OF_2020)
+
+    #POPULATE TIME SERIES WITH VALUES FOR 2021
+    grouped2021 = table2021.groupby('census_fips_code')
+    for county, group in grouped2021:
+        if county in county_dicts[categories[0]]:
+            populate_time_series({cat: county_dicts[cat][county] for cat in categories}, group, 321, END_OF_2021)
+
+    #POPULATE TIME SERIES WITH VALUES FOR 2022
+    grouped2022 = table2022.groupby('census_fips_code')
+    for county, group in grouped2022:
+        if county in county_dicts[categories[0]]:
+            populate_time_series({cat: county_dicts[cat][county] for cat in categories}, group, 686, END_OF_2022)
+
+    #REMOVE COUNTIES THAT APPEAR IN 2021/2022 BUT NOT EARLIER 
+    setOfBadCounties = set()
+    for key, value in county_dicts[categories[0]].items():
+        if value == [np.NAN] * 893 or len(value) != 893:
+            setOfBadCounties.add(key)
+    for county_data in county_dicts.values():
+        for key in setOfBadCounties:
+            if key in county_data:
+                del county_data[key]
+    
+    #LOAD DICTS TO PICKLES
+    for category, county_data in county_dicts.items():
+        with open(f'./data_output/county{category.replace("_percent_change_from_baseline", "").title()}.pickle', 'wb') as handle:
+            pickle.dump(county_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+createCountyTS("./data/2020_US_Region_Mobility_Report.csv", "./data/2021_US_Region_Mobility_Report.csv", "./data/2022_US_Region_Mobility_Report.csv")
