@@ -32,7 +32,7 @@ if __name__ == "__main__":
         'countyRetail_And_Recreation', 'countyGrocery_And_Pharmacy',
         'countyParks', 'countyTransit_Stations', 'countyWorkplaces', 'countyResidential'
     ]
-    base_path = './data_output/'
+    base_path = './data/intermediate_data/'
     outlier_threshold = 1
 
     process_pickle_files(pickle_files, base_path, outlier_threshold)

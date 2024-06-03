@@ -21,7 +21,7 @@ timeWindow = 30
 dim = 4
 numDays = 660
 
-directory = './data_output/'
+directory = '.data/intermediate_data/'
 
 base_names = [
     'countyRetail_And_Recreation',
@@ -51,5 +51,5 @@ for month in range(1, 23):
 
 df = pd.DataFrame(rows_list)
 
-csv_file_path = "./data_output/predictability_table.csv"
+csv_file_path = "./data/intermediate_data/predictability_table.csv"
 df.to_csv(csv_file_path, encoding='utf-8', index=False)
