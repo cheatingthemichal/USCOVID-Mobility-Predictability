@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 import ordpy
 
-def createCountyPred(TSDict, dim, timeWindow, numDays, base_name):
+def createCountyPred(TSDict, dim, timeWindow, numDays):
     predDict = {}
     for key, value in TSDict.items():
         predDict[key] = [1 - ordpy.permutation_entropy(value[x:x+timeWindow], dx=dim) 
@@ -17,11 +17,15 @@ def load_data(directory, base_name):
         data = pickle.load(handle)
     return data
 
+def save_pickle(data, filename):
+    with open(filename, 'wb') as handle:
+        pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
 timeWindow = 30
 dim = 4
 numDays = 660
 
-directory = '.data/intermediate_data/'
+directory = './data/intermediate_data/'
 
 base_names = [
     'countyRetail_And_Recreation',
@@ -33,7 +37,12 @@ base_names = [
 ]
 
 data = {base_name: load_data(directory, base_name) for base_name in base_names}
-pred = {base_name: createCountyPred(data[base_name], dim, timeWindow, numDays, base_name) for base_name in base_names}
+pred = {base_name: createCountyPred(data[base_name], dim, timeWindow, numDays) for base_name in base_names}
+
+for base_name in base_names:
+    category = base_name.replace('county', '')
+    pickle_filename = f'./data/intermediate_data/{base_name}_smoothed_Predictability.pickle'
+    save_pickle(pred[base_name], pickle_filename)
 
 rows_list = []
 
