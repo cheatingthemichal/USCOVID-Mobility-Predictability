@@ -1,0 +1,294 @@
+
+=================================================
+Category: Retail_and_Recreation 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.613158   0.001025   598.0   <2e-16 ***
+CasesIncreasing -0.027487   0.001562   -17.6   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                      edf Ref.df       F  p-value    
+s(LogPopulation)                   1.2820      2 385.837  < 2e-16 ***
+s(PercentBlack)                    1.3496      2   2.187  0.04477 *  
+s(PercentHispanic)                 1.5162      2  10.175 2.08e-06 ***
+s(MedHouseholdIncome)              0.6853      2   3.083  0.00155 ** 
+s(NewMonthlyCOVIDCases)            1.4782      2  54.176  < 2e-16 ***
+s(PercentAge60Plus)                1.7845      2   1.651  0.14836    
+s(PercentAge25PluswoutHSDiploma)   1.0856      2   7.512 1.93e-06 ***
+s(GovernmentResponseIndexAverage)  1.9991      2 427.355  < 2e-16 ***
+s(MonthlyPrecip)                   1.7595      2 116.595  < 2e-16 ***
+s(AvgMonthlyTemp)                  1.9762      2 156.815  < 2e-16 ***
+s(PercWorkersCommuteByTransit)     0.8303      2   2.235  0.01862 *  
+s(PercWorkersWorkFromHome)         1.2522      2  10.805 6.19e-07 ***
+te(Latitude,Longitude,Month)      23.3069     24  35.264  < 2e-16 ***
+s(Latitude,Longitude)              1.8452      3  41.134  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.131   Deviance explained = 13.2%
+GCV = 0.017657  Scale est. = 0.017632  n = 31153
+
+
+
+=================================================
+Category: Grocery_and_Pharmacy 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.619895   0.001121  552.93   <2e-16 ***
+CasesIncreasing -0.022334   0.001698  -13.15   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                        edf Ref.df       F  p-value    
+s(LogPopulation)                  1.872e+00      2 250.739  < 2e-16 ***
+s(PercentBlack)                   1.582e+00      2   7.395 0.000127 ***
+s(PercentHispanic)                2.494e-07      2   0.000 0.847135    
+s(MedHouseholdIncome)             1.377e+00      2   6.739 0.000112 ***
+s(NewMonthlyCOVIDCases)           1.626e+00      2  21.694  < 2e-16 ***
+s(PercentAge60Plus)               6.908e-07      2   0.000 0.500814    
+s(PercentAge25PluswoutHSDiploma)  5.509e-07      2   0.000 0.387909    
+s(GovernmentResponseIndexAverage) 1.323e+00      2 100.234  < 2e-16 ***
+s(MonthlyPrecip)                  1.819e+00      2 162.842  < 2e-16 ***
+s(AvgMonthlyTemp)                 9.926e-01      2  44.067  < 2e-16 ***
+s(PercWorkersCommuteByTransit)    1.528e+00      2   6.894 0.000200 ***
+s(PercWorkersWorkFromHome)        1.563e-07      2   0.000 0.854506    
+te(Latitude,Longitude,Month)      2.313e+01     24  14.272  < 2e-16 ***
+s(Latitude,Longitude)             2.241e+00      3   6.879 1.58e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.0703   Deviance explained = 7.17%
+GCV = 0.017222  Scale est. = 0.017195  n = 25551
+
+
+
+=================================================
+Category: Parks 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.517436   0.001871 276.622  < 2e-16 ***
+CasesIncreasing -0.020323   0.002721  -7.469 8.83e-14 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                        edf Ref.df      F  p-value    
+s(LogPopulation)                  1.000e+00      2 26.011  < 2e-16 ***
+s(PercentBlack)                   4.488e-01      2  0.412 0.164427    
+s(PercentHispanic)                1.757e+00      2  7.838 0.000112 ***
+s(MedHouseholdIncome)             2.606e-07      2  0.000 0.528230    
+s(NewMonthlyCOVIDCases)           1.253e+00      2 29.559  < 2e-16 ***
+s(PercentAge60Plus)               2.216e-07      2  0.000 0.719291    
+s(PercentAge25PluswoutHSDiploma)  8.524e-01      2  2.503 0.011630 *  
+s(GovernmentResponseIndexAverage) 1.935e+00      2 47.889  < 2e-16 ***
+s(MonthlyPrecip)                  1.583e+00      2 53.183  < 2e-16 ***
+s(AvgMonthlyTemp)                 1.933e+00      2 79.019  < 2e-16 ***
+s(PercWorkersCommuteByTransit)    7.474e-01      2  1.278 0.059652 .  
+s(PercWorkersWorkFromHome)        6.533e-01      2  0.501 0.208885    
+te(Latitude,Longitude,Month)      2.062e+01     24  9.976  < 2e-16 ***
+s(Latitude,Longitude)             2.991e+00      3 10.545  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.125   Deviance explained = 12.9%
+GCV = 0.015529  Scale est. = 0.015463  n = 8894
+
+
+
+=================================================
+Category: Transit_Stations 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.593978   0.001537  386.47   <2e-16 ***
+CasesIncreasing -0.034938   0.002308  -15.14   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                        edf Ref.df       F  p-value    
+s(LogPopulation)                  2.000e+00      2 146.699  < 2e-16 ***
+s(PercentBlack)                   8.793e-01      2   5.427 0.000404 ***
+s(PercentHispanic)                1.757e+00      2   4.612 0.004343 ** 
+s(MedHouseholdIncome)             1.000e+00      2  16.048  < 2e-16 ***
+s(NewMonthlyCOVIDCases)           1.545e+00      2  12.522 5.45e-07 ***
+s(PercentAge60Plus)               6.897e-08      2   0.000 0.878825    
+s(PercentAge25PluswoutHSDiploma)  1.050e+00      2   2.503 0.018426 *  
+s(GovernmentResponseIndexAverage) 2.000e+00      2 166.486  < 2e-16 ***
+s(MonthlyPrecip)                  9.461e-01      2  11.393 9.43e-07 ***
+s(AvgMonthlyTemp)                 1.930e+00      2  87.159  < 2e-16 ***
+s(PercWorkersCommuteByTransit)    1.958e+00      2  79.074  < 2e-16 ***
+s(PercWorkersWorkFromHome)        1.211e+00      2   0.782 0.265031    
+te(Latitude,Longitude,Month)      2.294e+01     24  24.707  < 2e-16 ***
+s(Latitude,Longitude)             2.555e+00      3  20.029  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.131   Deviance explained = 13.3%
+GCV = 0.020342  Scale est. = 0.020287  n = 16291
+
+
+
+=================================================
+Category: Workplaces 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.7067562  0.0009649  732.49   <2e-16 ***
+CasesIncreasing -0.0361946  0.0014906  -24.28   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                      edf Ref.df        F  p-value    
+s(LogPopulation)                   1.9732      2 1221.934  < 2e-16 ***
+s(PercentBlack)                    0.8656      2    5.815 0.000201 ***
+s(PercentHispanic)                 1.9803      2   15.422  3.1e-07 ***
+s(MedHouseholdIncome)              0.6479      2    1.876 0.013980 *  
+s(NewMonthlyCOVIDCases)            1.6211      2    2.179 0.067373 .  
+s(PercentAge60Plus)                1.8891      2    3.835 0.015384 *  
+s(PercentAge25PluswoutHSDiploma)   0.9379      2   38.735  < 2e-16 ***
+s(GovernmentResponseIndexAverage)  1.9038      2  157.757  < 2e-16 ***
+s(MonthlyPrecip)                   1.8330      2   87.805  < 2e-16 ***
+s(AvgMonthlyTemp)                  1.9428      2  880.956  < 2e-16 ***
+s(PercWorkersCommuteByTransit)     1.5291      2    5.503 0.000721 ***
+s(PercWorkersWorkFromHome)         0.8117      2    3.794 0.002053 ** 
+te(Latitude,Longitude,Month)      22.5689     24   15.944  < 2e-16 ***
+s(Latitude,Longitude)              3.0000      3    9.714  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.202   Deviance explained = 20.3%
+GCV = 0.021467  Scale est. = 0.021443  n = 41703
+
+
+
+=================================================
+Category: Residences 
+=================================================
+
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+PE ~ s(LogPopulation, k = 3) + s(PercentBlack, k = 3) + s(PercentHispanic, 
+    k = 3) + s(MedHouseholdIncome, k = 3) + s(NewMonthlyCOVIDCases, 
+    k = 3) + s(PercentAge60Plus, k = 3) + s(PercentAge25PluswoutHSDiploma, 
+    k = 3) + s(GovernmentResponseIndexAverage, k = 3) + s(MonthlyPrecip, 
+    k = 3) + s(AvgMonthlyTemp, k = 3) + s(PercWorkersCommuteByTransit, 
+    k = 3) + s(PercWorkersWorkFromHome, k = 3) + CasesIncreasing + 
+    te(Latitude, Longitude, Month, k = c(3, 3, 3)) + s(Latitude, 
+    Longitude, bs = "tp", k = 3)
+
+Parametric coefficients:
+                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     0.746020   0.001070  697.11   <2e-16 ***
+CasesIncreasing 0.032491   0.001561   20.81   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                                        edf Ref.df       F  p-value    
+s(LogPopulation)                  1.778e+00      2  43.428  < 2e-16 ***
+s(PercentBlack)                   8.713e-01      2   3.825 0.002688 ** 
+s(PercentHispanic)                6.271e-07      2   0.000 0.346932    
+s(MedHouseholdIncome)             1.042e-06      2   0.000 0.297747    
+s(NewMonthlyCOVIDCases)           9.402e-01      2  17.180  < 2e-16 ***
+s(PercentAge60Plus)               9.915e-01      2   9.552 8.45e-06 ***
+s(PercentAge25PluswoutHSDiploma)  9.448e-01      2   6.457 0.000161 ***
+s(GovernmentResponseIndexAverage) 1.993e+00      2 198.228  < 2e-16 ***
+s(MonthlyPrecip)                  9.994e-01      2 139.632  < 2e-16 ***
+s(AvgMonthlyTemp)                 1.843e+00      2 381.397  < 2e-16 ***
+s(PercWorkersCommuteByTransit)    9.796e-01      2  11.377 1.01e-06 ***
+s(PercWorkersWorkFromHome)        9.207e-02      2   0.039 0.352515    
+te(Latitude,Longitude,Month)      2.075e+01     24  30.330  < 2e-16 ***
+s(Latitude,Longitude)             1.175e-06      3   0.000 0.033560 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =   0.13   Deviance explained = 13.2%
+GCV = 0.011846  Scale est. = 0.011826  n = 20290
+
+

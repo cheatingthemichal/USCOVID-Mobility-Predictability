@@ -3,7 +3,7 @@
 
 Michal Hajlasz and Sen Pei
 
-The Google COVID-19 Community Mobility Reports data and a dataframe containing our analysis' features are in the data/raw_data directory.
+The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in the GAM, are in the data/raw_data directory.
 
 Pickle files used to create some figures are in the data/intermediate_data directory.
 
@@ -20,6 +20,4 @@ In particular, outliers in the % change in mobility time series are removed in d
 
 Select figures from our paper are in the results/figures directory and can be created by running their respective scripts in the src/make_Figures directory.
 
-TODO. GAM_analysis.R
-
-and the results are outputed in results/GAM_summary.txt
+Run src/GAM_analysis.R to print a summary of our model for each category to results/gam_summaries.txt. The p-values indicates the probability that the observed association occurred by chance. A low p-value (<0.05) suggests a statistically significant relationship. The F-value measures the ratio of the variance explained by the model to the variance due to error. Higher F-values indicate a stronger influence of the predictor on the response variable. The adjusted R-squared value reflects the proportion of the variance in the response variable explained by the model, adjusted for the number of predictors.
