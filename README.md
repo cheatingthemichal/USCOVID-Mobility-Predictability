@@ -5,7 +5,7 @@ Michal Hajlasz and Sen Pei
 
 This repository uses Git Large File Storage (LFS) to manage large files. To properly clone the repository and fetch all the LFS files, ensure that you have Git LFS installed on your machine (https://git-lfs.com/).
 
-Initialize Git LFS with 
+Then initialize Git LFS with:
 
     git lfs install
 
