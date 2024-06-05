@@ -15,7 +15,7 @@ Clone the repository using the standard git clone command:
 
 After cloning the repository, navigate to the repository directory and pull the LFS files:
 
-    cd repo
+    cd USCOVID-Mobility-Predictability
     git lfs pull
 
 The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in our GAM, are in the data/raw_data directory.
