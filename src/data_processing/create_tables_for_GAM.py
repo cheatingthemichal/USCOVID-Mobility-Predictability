@@ -6,7 +6,12 @@ pe_csv_path = "./data/intermediate_data/predictability_table.csv"
 features_df = pd.read_csv(features_csv_path, dtype={'FIPS': str})
 pe_df = pd.read_csv(pe_csv_path, dtype={'FIPS': str})
 
-categories = ['Retail and Recreation', 'Grocery and Pharmacy', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
+categories = ['Retail and Recreation',
+    'Grocery and Pharmacy',
+    'Parks',
+    'Transit Stations',
+    'Workplaces',
+    'Residences']
 
 for category in categories:
     category_pe_df = pe_df[pe_df['Category'] == category]

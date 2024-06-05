@@ -29,8 +29,12 @@ def process_pickle_files(pickle_files, base_path, outlier_threshold):
 
 if __name__ == "__main__":
     pickle_files = [
-        'countyRetail_And_Recreation', 'countyGrocery_And_Pharmacy',
-        'countyParks', 'countyTransit_Stations', 'countyWorkplaces', 'countyResidential'
+        'countyRetail_And_Recreation',
+        'countyGrocery_And_Pharmacy',
+        'countyParks',
+        'countyTransit_Stations',
+        'countyWorkplaces',
+        'countyResidential'
     ]
     base_path = './data/intermediate_data/'
     outlier_threshold = 1

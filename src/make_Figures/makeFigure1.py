@@ -1,4 +1,3 @@
-from cmath import isnan
 import numpy as np
 import pandas as pd
 import pickle
@@ -6,7 +5,6 @@ import matplotlib.pyplot as plt
 import math
 import matplotlib.dates as mdates
 from datetime import datetime as D
-import datetime as dt
 from matplotlib.ticker import FixedLocator
 
 # Initialize time variables

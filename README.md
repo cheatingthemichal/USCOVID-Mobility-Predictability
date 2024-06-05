@@ -5,7 +5,7 @@ Michal Hajlasz and Sen Pei
 
 The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in our GAM, are in the data/raw_data directory.
 
-Pickle files used to create some figures are in the data/intermediate_data directory.
+Files used to create figures are in the data/intermediate_data directory.
 
 Dataframes used for our GAM analysis are in the data/data_for_GAM directory.
 
@@ -13,11 +13,11 @@ All of the files in the data/intermediate_data and data/data_for_GAM directories
 
     python ./src/data_processing/create_raw_time_series_pickles_from_csv.py
     python ./src/data_processing/preprocess_raw_time_series_pickles.py
-    python ./src/data_processing/create_pred_table.py
+    python ./src/data_processing/calculate_predictability.py
     python ./src/data_processing/create_tables_for_GAM.py
 
-In particular, outliers in the % change in mobility time series are removed in src/data_processing/preprocess_raw_time_series_pickles.py and predictability is calculated in src/data_processing/create_pred_table.py
+In particular, outliers in the % change in mobility time series are removed in src/data_processing/preprocess_raw_time_series_pickles.py and predictability is calculated in src/data_processing/calculate_predictability.py
 
-Select figures from our paper are in the results/figures directory and can be created by running their respective scripts in the src/make_Figures directory.
+All main figures from our paper are in the results/figures directory and can be created by running their respective scripts in the src/make_Figures directory.
 
 Run src/GAM_analysis.R to print a summary of our model for each category to results/gam_summaries.txt. The p-values indicates the probability that the observed association occurred by chance. A low p-value (<0.05) suggests a statistically significant relationship. The F-value measures the ratio of the variance explained by the model to the variance due to error. Higher F-values indicate a stronger influence of the predictor on the response variable. The adjusted R-squared value reflects the proportion of the variance in the response variable explained by the model, adjusted for the number of predictors.

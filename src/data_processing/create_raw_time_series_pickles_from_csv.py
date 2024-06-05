@@ -97,4 +97,6 @@ def createCountyTS(filename2020, filename2021, filename2022):
         with open(f'./data/intermediate_data/county{category.replace("_percent_change_from_baseline", "").title()}.pickle', 'wb') as handle:
             pickle.dump(county_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-createCountyTS("./data/raw_data/2020_US_Region_Mobility_Report.csv", "./data/raw_data/2021_US_Region_Mobility_Report.csv", "./data/raw_data/2022_US_Region_Mobility_Report.csv")
+createCountyTS("./data/raw_data/2020_US_Region_Mobility_Report.csv",
+    "./data/raw_data/2021_US_Region_Mobility_Report.csv",
+    "./data/raw_data/2022_US_Region_Mobility_Report.csv")

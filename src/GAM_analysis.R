@@ -33,7 +33,7 @@ for (index in seq_along(categories)) {
     model_data <- fipsdata[fipsdata$Month >= period_of_interest[1] &
         fipsdata$Month <= period_of_interest[2], ]
 
-    gam_model <- gam(PE ~ s(LogPopulation, k = 3) +
+    gam_model <- gam(Pred ~ s(LogPopulation, k = 3) +
         s(PercentBlack, k = 3) +
         s(PercentHispanic, k = 3) +
         s(MedHouseholdIncome, k = 3) +
