@@ -3,6 +3,21 @@
 
 Michal Hajlasz and Sen Pei
 
+This repository uses Git Large File Storage (LFS) to manage large files. To properly clone the repository and fetch all the LFS files, ensure that you have Git LFS installed on your machine (https://git-lfs.com/).
+
+Initialize Git LFS with 
+
+    git lfs install
+
+Clone the repository using the standard git clone command:
+
+    git clone https://github.com/cheatingthemichal/USCOVID-Mobility-Predictability.git
+
+After cloning the repository, navigate to the repository directory and pull the LFS files:
+
+    cd repo
+    git lfs pull
+
 The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in our GAM, are in the data/raw_data directory.
 
 Files used to create figures are in the data/intermediate_data directory.
