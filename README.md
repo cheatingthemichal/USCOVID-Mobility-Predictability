@@ -3,7 +3,7 @@
 
 Michal Hajlasz and Sen Pei
 
-The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in the GAM, are in the data/raw_data directory.
+The Google COVID-19 Community Mobility Reports data, a dataframe containing our analysis' features, and an rds file containing data related to the geographical centroids of counties used in our GAM, are in the data/raw_data directory.
 
 Pickle files used to create some figures are in the data/intermediate_data directory.
 
@@ -16,7 +16,7 @@ All of the files in the data/intermediate_data and data/data_for_GAM directories
     python ./src/data_processing/create_pred_table.py
     python ./src/data_processing/create_tables_for_GAM.py
 
-In particular, outliers in the % change in mobility time series are removed in data_processing/preprocess_raw_time_series_pickles.py and predictability is calculated in src/data_processing/create_pred_table.py
+In particular, outliers in the % change in mobility time series are removed in src/data_processing/preprocess_raw_time_series_pickles.py and predictability is calculated in src/data_processing/create_pred_table.py
 
 Select figures from our paper are in the results/figures directory and can be created by running their respective scripts in the src/make_Figures directory.
 
