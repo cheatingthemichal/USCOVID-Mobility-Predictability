@@ -19,6 +19,7 @@ lengthFinal = numDays - timeWindow + 1
 
 # Create times array with correct length
 times = pd.date_range(start=startDate, end=endDate, periods=numDays)
+
 # Function to calculate empirical confidence intervals
 def mean_confidence_interval_empirical(data, CI_amount):
     lower_bound = np.percentile(data, (100 - CI_amount)/2)
@@ -73,7 +74,13 @@ for file_path in file_paths:
 
 processed_data = []
 
-titles = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
+titles = ['Retail and Recreation',
+          'Groceries and Pharmacies',
+          'Parks',
+          'Transit Stations',
+          'Workplaces',
+          'Residences']
+
 for index, data in enumerate(county_data):
     avg_data, ci_low_90, ci_high_90, ci_low_50, ci_high_50, min_counties, max_counties = calculate_avg_and_ci(data)
     processed_data.append((avg_data, ci_low_90, ci_high_90, ci_low_50, ci_high_50))
@@ -81,7 +88,6 @@ for index, data in enumerate(county_data):
 
 plt.rcParams.update({'font.size': 28})
 fig, axs = plt.subplots(2, 3, figsize=(30, 20))
-titles = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
 important_dates = ["2020-03-01", "2021-01-01", "2021-11-01"]
 tick_dates = pd.to_datetime(important_dates)
 

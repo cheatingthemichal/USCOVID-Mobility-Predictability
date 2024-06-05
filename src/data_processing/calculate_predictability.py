@@ -5,6 +5,7 @@ import pickle
 import ordpy
 import os
 
+# CALCULATE PREDICTABILITY WITH ORDPY
 def createCountyPred(TSDict, dim, timeWindow, numDays):
     predDict = {}
     for key, value in TSDict.items():
@@ -57,9 +58,6 @@ base_names = [
     'countyResidential'
 ]
 
-data = {base_name: load_data(directory, base_name) for base_name in base_names}
-pred = {base_name: createCountyPred(data[base_name], dim, timeWindow, numDays) for base_name in base_names}
-
 categories = [
     'RetailAndRecreation',
     'GroceriesAndPharmacies',
@@ -67,6 +65,9 @@ categories = [
     'TransitStations',
     'Workplaces',
     'Residences']
+
+data = {base_name: load_data(directory, base_name) for base_name in base_names}
+pred = {base_name: createCountyPred(data[base_name], dim, timeWindow, numDays) for base_name in base_names}
 
 calculate_and_save_averages(pred, categories)
 
@@ -77,7 +78,12 @@ for base_name in base_names:
 rows_list = []
 
 for month in range(1, 23):
-    for category, data in zip(['Retail and Recreation', 'Grocery and Pharmacy', 'Parks', 'Transit Stations', 'Workplaces', 'Residences'], pred.values()):
+    for category, data in zip(['Retail and Recreation',
+                               'Grocery and Pharmacy',
+                               'Parks',
+                               'Transit Stations',
+                               'Workplaces',
+                               'Residences'], pred.values()):
         for key, value in data.items():
             dict1 = {}
             county = str(int(key)).zfill(5)

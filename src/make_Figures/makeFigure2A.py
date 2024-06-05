@@ -14,7 +14,12 @@ file_paths = [
     "./data/intermediate_data/countyResidential_smooth.pickle",
 ]
 
-categories = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
+categories = ['Retail and Recreation',
+              'Groceries and Pharmacies',
+              'Parks',
+              'Transit Stations',
+              'Workplaces',
+              'Residences']
 colors = ['black', 'brown', 'green', 'purple', 'red', 'blue']
 
 all_data = []

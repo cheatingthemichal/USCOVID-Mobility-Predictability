@@ -12,7 +12,12 @@ file_paths = [
     "./data/intermediate_data/countyResidential.pickle",
 ]
 
-categories = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
+categories = ['Retail and Recreation',
+              'Groceries and Pharmacies',
+              'Parks',
+              'Transit Stations',
+              'Workplaces',
+              'Residences']
 colors = ['black', 'saddlebrown', 'darkgreen', 'indigo', 'darkred', 'darkblue']
 
 plt.rcParams.update({'font.size': 28})

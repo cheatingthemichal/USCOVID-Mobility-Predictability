@@ -22,7 +22,7 @@ def add_missing_days(county_data, numDays):
 
 def populate_time_series(county_dicts, group, start_index, end_date):
     whichDayIsIt = start_index
-    for index, row in group.iterrows():
+    for _, row in group.iterrows():
         while days[whichDayIsIt] != row['date']:
             intendedDay = datetime.strptime(days[whichDayIsIt], date_format)
             actualDay = datetime.strptime(row['date'], date_format)

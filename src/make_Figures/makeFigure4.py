@@ -67,7 +67,12 @@ med_data = []
 high_data_90 = []
 low_data_50 = []
 high_data_50 = []
-titles = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
+titles = ['Retail and Recreation',
+          'Groceries and Pharmacies',
+          'Parks',
+          'Transit Stations',
+          'Workplaces',
+          'Residences']
 
 for index, data in enumerate(county_data):
     low_90, med, high_90, low_50, high_50 = process_time_series_data(data, titles[index])
@@ -83,7 +88,6 @@ plt.rcParams.update({'font.size': 28})
 fig, axs = plt.subplots(2, 3, figsize=(30, 20))
 important_dates = ["2020-03-01", "2021-01-01", "2021-11-01"]
 tick_dates = pd.to_datetime(important_dates)
-titles = ['Retail and Recreation', 'Groceries and Pharmacies', 'Parks', 'Transit Stations', 'Workplaces', 'Residences']
 
 for i, ax in enumerate(axs.flat):
     ax.tick_params(axis='x', which='major', pad=10)

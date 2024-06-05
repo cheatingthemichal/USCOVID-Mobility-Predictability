@@ -277,7 +277,7 @@ plot_grid <- gridExtra::grid.arrange(
     grobs = grobs,
     layout_matrix = layout_matrix,
     widths = widths)
-    
+
 pdf(NULL)
 ggsave(filename = "./results/figures/Figure6.png",
     plot = plot_grid, width = 40, height = 30, dpi = 300)
